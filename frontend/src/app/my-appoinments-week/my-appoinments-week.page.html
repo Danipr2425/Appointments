@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>my-appoinments-week</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">my-appoinments-week</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list>
+    <!-- Mostrar las citas de hoy -->
+    <ion-item *ngFor="let a of weekAppoinments">
+      <ion-label>
+        <h1>{{ a.name }}</h1>
+        <p>{{ a.date | date: 'yyyy-MM-dd' }}</p>
+        <p>{{ a.hour }}</p>
+        <ion-button color="dark" (click)="deleteAppoinment(a.id)">
+          <ion-icon slot="start" name="trash-outline"></ion-icon>Delete</ion-button>
+        <ion-button color="dark" (click)="updateAppoinment(a.id)">
+          <ion-icon slot="start" name="build-outline"></ion-icon>Update</ion-button> 
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+<ion-button color="dark" expand = "block" (click)="gotoHomepage()">
+  Back</ion-button>
+
+</ion-content>

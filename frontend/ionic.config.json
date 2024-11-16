@@ -1,0 +1,7 @@
+{
+  "name": "AppoinmentsManagementApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

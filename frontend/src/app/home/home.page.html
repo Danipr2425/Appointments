@@ -1,0 +1,82 @@
+<!-- Menu lateral -->
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu Content</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <!-- Botones de navegación en el menú -->
+    <ion-button expand="block" color="dark" (click)="gotoMyappoinments()">Show appointments</ion-button>
+    <ion-button expand="block" color="dark" (click)="gotoAppoinmentsForm()">Create appointments</ion-button>
+    <ion-button expand="block" color="dark" (click)="gotoAppoinmentsToday()">My appointments for today</ion-button>
+    <ion-button expand="block" color="dark" (click)="gotoAppoinmentsWeek()">My appointments for this week</ion-button>
+  </ion-content>
+</ion-menu>
+
+<!-- Página principal (contenido visible) -->
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Appointment Managent</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="ion-padding">
+    <ion-card>
+      <ion-card-content>
+        <ion-item>
+          <ion-avatar slot="end">
+            <img src="../../assets/images/avatarvacio.jpg" alt="foto">
+          </ion-avatar>
+          <ion-label>
+            <h3><ion-icon slot="start" name="accessibility-outline"></ion-icon>
+              Name</h3>
+            <p>Date of today</p>
+          </ion-label>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <img alt="Imagen citas" src="./assets/images/agenda.jpg" />
+      <ion-card-header>
+        <ion-card-title>Appointments for today</ion-card-title>
+        <ion-card-subtitle>My work for today is...</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-list>
+          <!-- Mostrar las citas de hoy -->
+          <ion-item *ngFor="let a of todayAppoinments">
+            <ion-label>
+              <h1>{{ a.name }}</h1>
+              <p>{{ a.date | date: 'yyyy-MM-dd' }}</p>
+              <p>{{ a.hour }}</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-footer>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-button color="dark" (click)="gotoAppoinmentsToday()">Today</ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-button color="dark" (click)="gotoAppoinmentsWeek()">This Week</ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-button color="dark" (click)="gotoMyappoinments()">This Week</ion-button>
+            </ion-col>
+        </ion-row>
+        </ion-grid>
+      </ion-footer>
+    </ion-card>
+  </ion-content>
+</div>

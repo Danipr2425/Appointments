@@ -1,0 +1,31 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Angular build output
+/dist/
+/tmp/
+/out-tsc/
+
+# Angular cache (a veces incluye archivos grandes que no deberían subirse)
+frontend/.angular/cache/
+
+# Archivos de configuración
+package-lock.json
+yarn.lock
+
+# Editor config files
+.vscode/
+.idea/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+*.log.*
+
+# Environments
+.env

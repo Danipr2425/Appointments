@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Update Appointment</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Update Appointment</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <form [formGroup]="appoinmentForm" (ngSubmit)="updateAppoinment()">
+    <ion-item>
+      <ion-label position="floating">Name</ion-label>
+      <ion-input formControlName="name" type="text"></ion-input>
+    </ion-item>
+    <ion-note color="danger" *ngIf="getFormControl('name')?.hasError('required') && getFormControl('name')?.touched">
+      Name is required.
+    </ion-note>
+  
+    <ion-item>
+      <ion-label position="floating">Date</ion-label>
+      <ion-input formControlName="date" type="text"></ion-input>
+    </ion-item>
+    <ion-note color="danger" *ngIf="getFormControl('date')?.hasError('required') && getFormControl('date')?.touched">
+      Date is required.
+    </ion-note>
+  
+    <ion-item>
+      <ion-label position="floating">Hour</ion-label>
+      <ion-input formControlName="hour" type="text"></ion-input>
+    </ion-item>
+    <ion-note color="danger" *ngIf="getFormControl('hour')?.hasError('required') && getFormControl('hour')?.touched">
+      Hour is required.
+    </ion-note>
+  
+    <ion-button color="dark" expand="full" type="submit" [disabled]="!appoinmentForm.valid">
+      <ion-icon slot="start" name="build-outline"></ion-icon>Update</ion-button>
+    <ion-button color="dark" expand = "block" (click)="gotoHomepage()">
+      Back</ion-button>
+  </form>
