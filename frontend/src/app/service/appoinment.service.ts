@@ -19,16 +19,21 @@ export class AppoinmentService {
     return this.httpClient.get(this.endpoint);
   }
 
-  create(appoinment: any) {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/x-www-form-urlencoded'
-    });
-    const body = new URLSearchParams();
-    body.append("name", appoinment.name);
-    body.append("date", appoinment.date);
-    body.append("hour", appoinment.hour);
+  createAppoinment(appoinment: any, blob: Blob | null) {
+    let formData = new FormData();
 
-    return this.httpClient.post(this.endpoint, body.toString(), { headers });
+    // Asegúrate de que todos los campos del formulario se añaden correctamente al FormData
+    formData.append("name", appoinment.name);
+    formData.append("date", appoinment.date);
+    formData.append("hour", appoinment.hour);
+
+    // Si se ha proporcionado un archivo (imagen), se añade al FormData
+    if (blob) {
+      formData.append("file", blob, "captured-photo.jpg");
+    }
+
+    // Realizar la solicitud POST con los datos del FormData
+    return this.httpClient.post(this.endpoint, formData);
   }
 
   delete(id: any) {

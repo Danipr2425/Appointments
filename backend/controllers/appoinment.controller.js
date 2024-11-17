@@ -14,7 +14,8 @@ exports.create = (req,res) => {
     const appoinment = {
         name: req.body.name,
         date: req.body.date,
-        hour: req.body.hour
+        hour: req.body.hour,
+        filename: req.file ? req.file.filename : ""
     };
 
     //Save Appoinment in the database
@@ -64,11 +65,18 @@ exports.findOne = (req,res) => {
 
 exports.update = (req, res) => {
   const id = req.params.id;
-  Appoinment.update(req.body, {
+
+  // Si el campo 'filename' no está presente, lo asignamos a una cadena vacía
+  let updateData = req.body;
+  if (!req.body.filename) {
+    updateData.filename = "";  // Si no se envió un archivo, se deja vacío o se asigna un valor por defecto
+  }
+
+  Appoinment.update(updateData, {
     where: { id: id }
   })
     .then(num => {
-      if (num == 1) {
+      if (num[0] === 1) {
         res.send({ message: "Appoinment was updated successfully." });
       } else {
         res.status(404).send({

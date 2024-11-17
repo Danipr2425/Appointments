@@ -12,17 +12,25 @@
   </ion-header>
 
   <ion-item *ngFor="let a of appoinments">
+    <ion-avatar slot="start">
+      <img *ngIf="a.filename" src="http://localhost:8080/images/{{a.filename}}" alt="image" />
+    </ion-avatar>
     <ion-label>
       <h1>{{a.name}}</h1>
       <!-- Aplica el pipe de fecha para mostrar solo 'YYYY-MM-DD' -->
       <p>{{ a.date | date:'yyyy-MM-dd' }}</p>
       <p>{{a.hour}}</p>
-      <ion-button  color="dark" (click)="deleteAppoinment(a.id)">
+      <ion-button color="dark" (click)="deleteAppoinment(a.id)">
         <ion-icon slot="start" name="trash-outline"></ion-icon>Delete</ion-button>
       <ion-button color="dark" (click)="updateAppoinment(a.id)">
-        <ion-icon slot="start" name="build-outline"></ion-icon>Update</ion-button>  
+        <ion-icon slot="start" name="build-outline"></ion-icon>Update</ion-button>
     </ion-label>
   </ion-item>
-  <ion-button color="dark" expand = "block" (click)="gotoHomepage()">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addAppoinment()">
+    <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-button color="dark" expand="block" (click)="gotoHomepage()">
     Back</ion-button>
 </ion-content>

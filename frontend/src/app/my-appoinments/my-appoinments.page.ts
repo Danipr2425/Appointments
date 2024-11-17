@@ -21,6 +21,10 @@ export class MyAppoinmentsPage implements OnInit {
     this.router.navigateByUrl("/home");
   }
 
+  addAppoinment(){
+    this.router.navigateByUrl("appoinment-form-page");
+  }
+
   getAllAppoinments(){
     this.appoinmentService.getAppoinments().subscribe(response =>{
       this.appoinments = response;

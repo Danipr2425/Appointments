@@ -14,6 +14,9 @@
   <ion-list>
     <!-- Mostrar las citas de hoy -->
     <ion-item *ngFor="let a of weekAppoinments">
+      <ion-avatar slot="start">
+        <img *ngIf="a.filename" src="http://localhost:8080/images/{{a.filename}}" alt="image" />
+      </ion-avatar>
       <ion-label>
         <h1>{{ a.name }}</h1>
         <p>{{ a.date | date: 'yyyy-MM-dd' }}</p>
