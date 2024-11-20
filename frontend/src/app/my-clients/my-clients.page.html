@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>My clients</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item *ngFor="let c of clients">
+    <ion-avatar slot="start">
+      <img *ngIf="c.filename; else defaultImage" src="http://localhost:8080/images/{{c.filename}}" alt="image" />
+      <!-- Usamos una plantilla 'else' para mostrar la imagen predeterminada si no hay 'filename' -->
+      <ng-template #defaultImage>
+        <img src="http://localhost:8080/images/avatarvacio.jpg" alt="default image" />
+      </ng-template>
+    </ion-avatar>
+    <ion-label>
+      <h1>{{c.name}}</h1>
+      <ion-button color="dark" (click)="deleteClient(c.id)">
+        <ion-icon slot="start" name="trash-outline"></ion-icon>Delete</ion-button>
+      <ion-button color="dark" (click)="updateClient(c.id)">
+        <ion-icon slot="start" name="build-outline"></ion-icon>Update</ion-button>
+    </ion-label>
+  </ion-item>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addClient()">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-button color="dark" expand="block" (click)="gotoHomepage()">
+    Back</ion-button>
+</ion-content>

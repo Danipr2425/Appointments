@@ -29,8 +29,16 @@ export class HomePage {
     this.router.navigateByUrl("/appoinment-form-page");
   }
 
+  gotoClients(){
+    this.router.navigateByUrl("/my-clients");
+  }
+
   gotoAppoinmentsToday(){
     this.router.navigateByUrl("/my-appoinments-today");
+  }
+
+  gotoClientsForm(){
+    this.router.navigateByUrl("/client-form-page");
   }
 
   gotoAppoinmentsWeek(){

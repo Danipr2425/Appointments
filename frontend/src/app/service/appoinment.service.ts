@@ -19,21 +19,9 @@ export class AppoinmentService {
     return this.httpClient.get(this.endpoint);
   }
 
-  createAppoinment(appoinment: any, blob: Blob | null) {
-    let formData = new FormData();
-
-    // Asegúrate de que todos los campos del formulario se añaden correctamente al FormData
-    formData.append("name", appoinment.name);
-    formData.append("date", appoinment.date);
-    formData.append("hour", appoinment.hour);
-
-    // Si se ha proporcionado un archivo (imagen), se añade al FormData
-    if (blob) {
-      formData.append("file", blob, "captured-photo.jpg");
-    }
-
-    // Realizar la solicitud POST con los datos del FormData
-    return this.httpClient.post(this.endpoint, formData);
+  // Crear una cita
+  createAppoinment(appointment: any): Observable<any> {
+    return this.httpClient.post(this.endpoint, appointment);  // Realiza una solicitud POST al backend
   }
 
   delete(id: any) {

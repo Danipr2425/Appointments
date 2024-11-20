@@ -7,6 +7,8 @@
   </ion-header>
   <ion-content class="ion-padding">
     <!-- Botones de navegación en el menú -->
+    <ion-button expand="block" color="dark" (click)="gotoClients()">Clients</ion-button>
+    <ion-button expand="block" color="dark" (click)="gotoClientsForm()">Create clients</ion-button>
     <ion-button expand="block" color="dark" (click)="gotoMyappoinments()">Show appointments</ion-button>
     <ion-button expand="block" color="dark" (click)="gotoAppoinmentsForm()">Create appointments</ion-button>
     <ion-button expand="block" color="dark" (click)="gotoAppoinmentsToday()">My appointments for today</ion-button>
@@ -52,9 +54,6 @@
         <ion-list>
           <!-- Mostrar las citas de hoy -->
           <ion-item *ngFor="let a of todayAppoinments">
-            <ion-avatar slot="start">
-              <img *ngIf="a.filename" src="http://localhost:8080/images/{{a.filename}}" alt="image" />
-            </ion-avatar>
             <ion-label>
               <h1>{{ a.name }}</h1>
               <p>{{ a.date | date: 'yyyy-MM-dd' }}</p>
@@ -71,6 +70,9 @@
       <ion-footer>
         <ion-grid>
           <ion-row>
+            <ion-col>
+              <ion-button color="dark" (click)="gotoClients()">Clients</ion-button>
+            </ion-col>
             <ion-col>
               <ion-button color="dark" (click)="gotoAppoinmentsToday()">Today</ion-button>
             </ion-col>
