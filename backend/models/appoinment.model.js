@@ -14,9 +14,6 @@ module.exports = (sequelize,Sequelize) =>  {
         hour: {
             type: Sequelize.STRING,
             allowNull: false,
-        },
-        filename: {
-            type: Sequelize.STRING,
         }
     });
     return Appoinment;

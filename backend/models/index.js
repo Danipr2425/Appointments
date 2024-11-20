@@ -19,5 +19,7 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.appoinments = require("./appoinment.model.js")(sequelize,Sequelize);
+db.clients = require("./client.model.js")(sequelize, Sequelize);  // Importa el modelo `Client`
+
 
 module.exports = db;
