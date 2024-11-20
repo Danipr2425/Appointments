@@ -52,7 +52,7 @@ exports.findOne = (req,res) => {
         res.send(data);
       } else {
         res.status(404).send({
-          message: `Cannot find client with id=${id}.`
+          message: 'Cannot find client with id=${id}.'
         });
       }
     })
@@ -90,7 +90,7 @@ exports.update = (req, res) => {
                   });
           } else {
               res.status(404).send({
-                  message: `No se pudo actualizar el cliente con id=${id}.`
+                  message: 'No se pudo actualizar el cliente con id=${id}.'
               });
           }
       })
@@ -114,7 +114,7 @@ exports.delete = (req,res) => {
         });
       } else {
         res.send({
-          message: `Cannot delete client with id=${id}. Maybe client was not found!`
+          message: 'Cannot delete client with id=${id}. Maybe client was not found!'
         });
       }
     })
@@ -123,4 +123,25 @@ exports.delete = (req,res) => {
         message: "Could not delete client with id=" + id
       });
     });
+};
+
+exports.findByClient = (req, res) => {
+  const clientId = req.params.clientId;
+
+  Appoinment.findAll({
+      where: { clientId: clientId },  // Filtramos por clientId
+      include: [{
+          model: db.clients,
+          as: 'client',  // Alias de la relación
+          attributes: ['id', 'name'],  // Solo mostrar el id y nombre del cliente
+      }]
+  })
+  .then(data => {
+      res.send(data);
+  })
+  .catch(err => {
+      res.status(500).send({
+          message: err.message || "Some error occurred while retrieving the appoinments."
+      });
+  });
 };

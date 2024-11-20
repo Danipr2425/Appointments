@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 
 const db = require("./models");
 
-db.sequelize.sync({ force: true }).then(() => {
+db.sequelize.sync({ alter: true }).then(() => {
     console.log("Drop and re-sync db.")
 })
 
@@ -32,5 +32,5 @@ require("./routes/client.routes")(app);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}.`);
+    console.log('Server is running on port ${PORT}.');
 });

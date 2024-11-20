@@ -11,36 +11,34 @@ export class MyAppoinmentsPage implements OnInit {
 
   appoinments: any = [];
 
-  constructor(private appoinmentService : AppoinmentService,private router: Router) { }
+  constructor(private appoinmentService: AppoinmentService, private router: Router) { }
 
   ngOnInit() {
     this.getAllAppoinments();
   }
 
-  gotoHomepage(){
+  gotoHomepage() {
     this.router.navigateByUrl("/home");
   }
 
-  addAppoinment(){
+  addAppoinment() {
     this.router.navigateByUrl("appoinment-form-page");
   }
 
-  getAllAppoinments(){
-    this.appoinmentService.getAppoinments().subscribe(response =>{
+  getAllAppoinments() {
+    this.appoinmentService.getAppoinments().subscribe(response => {
       this.appoinments = response;
-    })
+    });
   }
 
-  deleteAppoinment(id:any){
-    this.appoinmentService.delete(id).subscribe(response =>{
+  deleteAppoinment(id: any) {
+    this.appoinmentService.delete(id).subscribe(response => {
       this.getAllAppoinments();
-    })
+    });
   }
 
   updateAppoinment(id: any) {
     // Redirigir a la página de actualización pasando el ID de la cita
     this.router.navigateByUrl(`/update-appoinment/${id}`);
-    this.getAllAppoinments();
   }
-
 }

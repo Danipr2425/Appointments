@@ -45,7 +45,7 @@ export class UpdateAppoinmentPage implements OnInit {
         console.log('Datos de la cita cargados:', appoinment);
         // Llenamos el formulario con los datos de la cita
         this.appoinmentForm.patchValue({
-          name: appoinment.name,
+          
           date: appoinment.date,
           hour: appoinment.hour
         });

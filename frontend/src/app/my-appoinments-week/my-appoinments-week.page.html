@@ -15,7 +15,6 @@
     <!-- Mostrar las citas de hoy -->
     <ion-item *ngFor="let a of weekAppoinments">
       <ion-label>
-        <h1>{{ a.name }}</h1>
         <p>{{ a.date | date: 'yyyy-MM-dd' }}</p>
         <p>{{ a.hour }}</p>
         <ion-button color="dark" (click)="deleteAppoinment(a.id)">

@@ -7,13 +7,13 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Appoinments</ion-title>
+      <ion-title size="large">Appointments</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <ion-item *ngFor="let a of appoinments">
     <ion-label>
-      <h1>{{a.name}}</h1>
+      <h1>{{a.client.name}}</h1> <!-- Mostrar el nombre del cliente -->
       <!-- Aplica el pipe de fecha para mostrar solo 'YYYY-MM-DD' -->
       <p>{{ a.date | date:'yyyy-MM-dd' }}</p>
       <p>{{a.hour}}</p>
@@ -23,11 +23,14 @@
         <ion-icon slot="start" name="build-outline"></ion-icon>Update</ion-button>
     </ion-label>
   </ion-item>
+
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="addAppoinment()">
-    <ion-icon name="add-outline"></ion-icon>
+      <ion-icon name="add-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>
+
   <ion-button color="dark" expand="block" (click)="gotoHomepage()">
-    Back</ion-button>
+    Back
+  </ion-button>
 </ion-content>

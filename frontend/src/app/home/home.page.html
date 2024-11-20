@@ -55,7 +55,6 @@
           <!-- Mostrar las citas de hoy -->
           <ion-item *ngFor="let a of todayAppoinments">
             <ion-label>
-              <h1>{{ a.name }}</h1>
               <p>{{ a.date | date: 'yyyy-MM-dd' }}</p>
               <p>{{ a.hour }}</p>
             </ion-label>

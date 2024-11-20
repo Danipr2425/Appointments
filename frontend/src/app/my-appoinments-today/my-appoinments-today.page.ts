@@ -35,8 +35,8 @@ export class MyAppoinmentsTodayPage implements OnInit {
   // Método para filtrar las citas de hoy
   filterAppoinmentsForToday() {
     const today = new Date().toISOString().split('T')[0];  // Obtener la fecha de hoy en formato 'YYYY-MM-DD'
-    // Filtra las citas comparando solo la parte de la fecha (ignora la hora y la zona horaria)
-    this.todayAppoinments = this.appoinments.filter(a => a.date.split('T')[0] === today); 
+    // Filtrar las citas comparando solo la fecha (ignorando la hora y la zona horaria)
+    this.todayAppoinments = this.appoinments.filter(a => a.date.split('T')[0] === today);
   }
 
   deleteAppoinment(id:any){

@@ -16,7 +16,7 @@ export class AppoinmentService {
   constructor(private httpClient: HttpClient) { }
 
   getAppoinments() {
-    return this.httpClient.get(this.endpoint);
+    return this.httpClient.get<any[]>(this.endpoint);
   }
 
   // Crear una cita
